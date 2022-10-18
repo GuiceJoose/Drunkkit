@@ -1,5 +1,11 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
 import { FaSignInAlt } from "react-icons/fa";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { login, reset } from "../features/auth/authSlice";
+import { AppDispatch } from "../app/store";
+import Spinner from "../components/Spinner";
 
 const Login = () => {
   interface IUserLogin {
@@ -13,6 +19,25 @@ const Login = () => {
 
   const { email, password } = loginFormData;
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state: any) => {
+      return state.auth;
+    }
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/");
+    }
+    dispatch(reset());
+  }, [user, isError, isSuccess, message, navigate, dispatch]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setLoginFormData((previousState) => ({
       ...previousState,
@@ -21,7 +46,18 @@ const Login = () => {
   };
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(login(userData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
   return (
     <div>
       <section className="heading">
@@ -43,8 +79,8 @@ const Login = () => {
           <input
             type="password"
             className="form-item"
-            id="password1"
-            name="password1"
+            id="passwor"
+            name="password"
             placeholder="Please enter your password"
             onChange={handleChange}
           ></input>
