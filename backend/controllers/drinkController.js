@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
+const { globalAgent } = require("http");
 
 const Drink = require("../models/drinkModel");
+const User = require("../models/userModel");
 
 // @desc Get drinks
 // @route GET /api/drinks
@@ -20,6 +22,7 @@ const addDrink = asyncHandler(async (req, res) => {
   }
   const drink = await Drink.create({
     name: req.body.text,
+    user: req.user.id,
   });
 
   res.status(200).json(drink);
@@ -35,6 +38,18 @@ const updateDrink = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Drink not found");
   }
+  const user = await User.findById(req.user.id);
+  // check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+  // check that loged in user matches drink user
+  if (drink.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
+  }
+
   const updatedDrink = await Drink.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
@@ -49,6 +64,17 @@ const deleteDrink = asyncHandler(async (req, res) => {
   if (!drink) {
     res.status(400);
     throw new Error("Drink not found");
+  }
+  const user = await User.findById(req.user.id);
+  // check for user
+  if (!user) {
+    res.status(401);
+    throw new Error("User not found");
+  }
+  // check that loged in user matches drink user
+  if (drink.user.toString() !== user.id) {
+    res.status(401);
+    throw new Error("User not authorized");
   }
   await drink.remove();
   res.status(200).json({ id: req.params.id });

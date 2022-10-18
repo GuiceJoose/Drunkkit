@@ -6,9 +6,10 @@ const {
   updateDrink,
   deleteDrink,
 } = require("../controllers/drinkController");
+const { protect } = require("../middleware/authMiddleware");
 
-router.route("/").get(getDrinks).post(addDrink);
+router.route("/").get(getDrinks).post(protect, addDrink);
 
-router.route("/:id").put(updateDrink).delete(deleteDrink);
+router.route("/:id").put(protect, updateDrink).delete(protect, deleteDrink);
 
 module.exports = router;
