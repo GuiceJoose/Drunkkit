@@ -1,5 +1,11 @@
+import DrinkForm from "../components/DrinkForm";
+
 const Dashboard = () => {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <DrinkForm />
+    </div>
+  );
 };
 
 export default Dashboard;

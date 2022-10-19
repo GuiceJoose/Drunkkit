@@ -13,10 +13,10 @@ const drinkSchema = mongoose.Schema({
   recipe: [
     {
       quantity: {
-        type: Number,
+        type: String,
         required: [true, "Please add quantity of ingredient"],
       },
-      ingredient: { type: string, required: [true, "Please add ingredient"] },
+      ingredient: { type: String, required: [true, "Please add ingredient"] },
     },
   ],
   instructions: {

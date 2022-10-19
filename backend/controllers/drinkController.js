@@ -16,7 +16,7 @@ const getDrinks = asyncHandler(async (req, res) => {
 // @route PUT /api/drinks
 // @access Private
 const addDrink = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  if (!req.body) {
     res.status(400);
     throw new Error("please add a text field");
   }

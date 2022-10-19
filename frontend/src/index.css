@@ -44,3 +44,8 @@ ul {
   width: 70%;
   margin: 0 auto;
 }
+
+.recipe-inputs {
+  display: flex;
+  flex-direction: column;
+}
