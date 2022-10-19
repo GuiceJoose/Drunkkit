@@ -10,12 +10,21 @@ const drinkSchema = mongoose.Schema({
     type: String,
     required: [true, "Please add a name for this drink"],
   },
-  //   ingredients: [{ type: String }],
-  //   instructions: {
-  //     type: String,
-  //     required: [true, "Please add instruction for making this drink"],
-  //   },
-  //   glass: String,
+  recipe: [
+    {
+      quantity: {
+        type: Number,
+        required: [true, "Please add quantity of ingredient"],
+      },
+      ingredient: { type: string, required: [true, "Please add ingredient"] },
+    },
+  ],
+  instructions: {
+    type: String,
+    required: [true, "Please add instruction for making this drink"],
+  },
+  glass: String,
+  voteCount: Number,
 });
 
 module.exports = mongoose.model("Drink", drinkSchema);

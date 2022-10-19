@@ -21,8 +21,12 @@ const addDrink = asyncHandler(async (req, res) => {
     throw new Error("please add a text field");
   }
   const drink = await Drink.create({
-    name: req.body.text,
     user: req.user.id,
+    name: req.body.name,
+    recipe: req.body.recipe,
+    instructions: req.body.instructions,
+    glass: req.body.glass,
+    voteCount: 0,
   });
 
   res.status(200).json(drink);
