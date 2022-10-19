@@ -38,14 +38,14 @@ const updateDrink = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Drink not found");
   }
-  const user = await User.findById(req.user.id);
+
   // check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
   // check that loged in user matches drink user
-  if (drink.user.toString() !== user.id) {
+  if (drink.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
@@ -65,14 +65,13 @@ const deleteDrink = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Drink not found");
   }
-  const user = await User.findById(req.user.id);
   // check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error("User not found");
   }
   // check that loged in user matches drink user
-  if (drink.user.toString() !== user.id) {
+  if (drink.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error("User not authorized");
   }
