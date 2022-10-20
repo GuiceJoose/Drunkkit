@@ -1,0 +1,168 @@
+{
+  "Base Sprits": [
+    {
+      "Category": "Rum",
+      "Subcategories": [
+        "White Rum",
+        "Gold Rum",
+        "Dark Rum",
+        "Spiced Rum",
+        "Rhum Agricole",
+        "Overproof Rum",
+        "Coconut Rum"
+      ]
+    },
+    {
+      "Category": "Tequila",
+      "Subcategories": ["Tequila Blanco", "Aged Tequila"]
+    },
+    {
+      "Category": "Whiskey",
+      "Subcategories": [
+        "Blended Whiskey",
+        "Scotch",
+        "Irish Whiskey",
+        "Rye Whiskey",
+        "Bourbon"
+      ]
+    },
+    {
+      "Category": "Brandy",
+      "Subcategories": [
+        "Apple Brandy",
+        "Plum Brandy",
+        "Pear Brandy",
+        "Cherry Brandy",
+        "Apricot Brandy"
+      ]
+    },
+    {
+      "Category": "Cognac",
+      "Subcategories": []
+    },
+    {
+      "Category": "Vodka",
+      "Subcategories": [
+        "Apple Vodka",
+        "Lime Vodka",
+        "Lemon Vodka",
+        "Orange Vodka",
+        "Vanilla Vodka",
+        "Cherry Vodka",
+        "Grapefruit Vodka",
+        "Cranberry Vodka"
+      ]
+    }
+  ],
+  "Liqueurs": [
+    {
+      "Category": "Fruit Liqueur",
+      "Subcategories": [
+        "Apple Liqueur",
+        "Apricot Liqueur",
+        "Banana Liqueur",
+        "Blackberry Liqueur",
+        "Blood Orange Liqueur",
+        "Blue Curacao",
+        "Organg Curacao",
+        "Lychee Liqueur",
+        "Maraschino Liqueur",
+        "Melon Liqueur",
+        "Passionfruit Liqueur",
+        "Peach Liqueur",
+        "Pear Liqueur",
+        "Raspberry Liqueur",
+        "Strawberry Liqueur",
+        "Triple Sec",
+        "Kirsch",
+        "Limoncello",
+        "crème de cassis",
+        "Shrubb",
+        "Sloe Gin"
+      ]
+    },
+    {
+      "Category": "Herbal Liqueur",
+      "Subcategories": [
+        "Absynthe",
+        "Aloe Liqueur",
+        "Anise Liqueur",
+        "Aquavit",
+        "Crème de violette",
+        "Jägermeister",
+        "Mint Liqueur",
+        "Falernum",
+        "Ginger Liquer"
+      ]
+    },
+    {
+      "Category": "Nut Liqueur",
+      "Subcategories": ["Amaretto", "Hazelnut Liqueur", "Walnut Liqueur"]
+    },
+    {
+      "Category": "Desert Liqueur",
+      "Subcategories": [
+        "Butterscotch Liqueur",
+        "Coffee Liqueur",
+        "Honey Liqueur",
+        "Vanilla Liqueur",
+        "Irisish Cream"
+      ]
+    },
+    {
+      "Category": "Wine and Champagne",
+      "Subcategories": []
+    },
+    {
+      "Category": "Beers",
+      "Subcategories": []
+    },
+    {
+      "Category": "Other Fermented Spirits",
+      "Subcategories": [
+        "Dry Vermout",
+        "Sweet Vermouth",
+        "Blanc Vermouth",
+        "Sake",
+        "Sparkling Sake",
+        "Mead",
+        "Soju",
+        "Dry Sherry",
+        "Sweet Sherry",
+        "Red Wine",
+        "White Wine",
+        "Hard Cider"
+      ]
+    },
+    {
+      "Category": "Fruits, Vegetables, and Juices",
+      "Subcategories": [
+        "Apple",
+        "Banana",
+        "Blackberry",
+        "Blueberry",
+        "Cherry",
+        "Cider",
+        "Coconut Water",
+        "Cranberry",
+        "Cucumber",
+        "Grape",
+        "Grapefruit",
+        "Guava Nectar",
+        "Kiwi",
+        "Lemon",
+        "Lime",
+        "Orange",
+        "Passionfruit Juice",
+        "Peach",
+        "Pear",
+        "Pineapple",
+        "Pomegranite Juice",
+        "Raspberry",
+        "Strawberry",
+        "Tomato",
+        "Watermelon"
+      ]
+    }
+  ]
+}
