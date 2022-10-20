@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { register, reset } from "../features/auth/authSlice";
+import { reset } from "../features/drinks/drinkSlice";
 import { AppDispatch } from "../app/store";
 import Spinner from "../components/Spinner";
 import { createDrink } from "../features/drinks/drinkSlice";
 
-const DrinkForm = () => {
+const DrinkForm = ({ setDrinkModalOpen }: any) => {
   interface DrinkInput {
     name: string;
     recipe: { id: string; quantity: string; ingredient: string }[];
@@ -106,6 +106,7 @@ const DrinkForm = () => {
     // }
     const drinkData = { name, recipe, instructions, glass };
     dispatch(createDrink(drinkData));
+    setDrinkModalOpen(false);
   };
 
   if (isLoading) {
