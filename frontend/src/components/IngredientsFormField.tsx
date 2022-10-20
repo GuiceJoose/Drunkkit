@@ -32,9 +32,13 @@ const IngredientsFormField = ({
         placeholder="Ingredient"
         onChange={(e) => handleInputChange(ingredientNumber, e)}
       ></input>
-      <button onClick={(e) => handleDelete(ingredientNumber, e)}>
-        Delete ingredient
-      </button>
+      {ingredientNumber > 1 ? (
+        <button onClick={(e) => handleDelete(ingredientNumber, e)}>
+          Delete ingredient
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

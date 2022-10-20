@@ -23,7 +23,10 @@ const DrinkForm = () => {
   }
   const [drinkFormData, setDrinkFormData] = useState<DrinkInput>({
     name: "",
-    recipe: [{ id: uuidv4(), quantity: "0", ingredient: "" }],
+    recipe: [
+      { id: uuidv4(), quantity: "0", ingredient: "" },
+      { id: uuidv4(), quantity: "0", ingredient: "" },
+    ],
     instructions: "",
     glass: "",
   });
