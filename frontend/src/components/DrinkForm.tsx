@@ -75,7 +75,7 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
   const handleSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
     setDrinkFormData((previousState) => ({
       ...previousState,
-      [e.target.name]: e.target.value,
+      glass: e.target.value,
     }));
   };
 
@@ -153,6 +153,10 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
           className="form-select"
           onChange={handleSelectChange}
         >
+          <option hidden disabled selected>
+            {" "}
+            -- select an option --{" "}
+          </option>
           <option value="rocks">Rocks Glass</option>
           <option value="martini">Martini Glass</option>
           <option value="highball">Highball Glass</option>
