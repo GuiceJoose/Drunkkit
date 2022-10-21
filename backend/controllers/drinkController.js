@@ -13,7 +13,7 @@ const getDrinks = asyncHandler(async (req, res) => {
 });
 
 // @desc Add drink
-// @route PUT /api/drinks
+// @route POST /api/drinks
 // @access Private
 const addDrink = asyncHandler(async (req, res) => {
   if (!req.body) {
