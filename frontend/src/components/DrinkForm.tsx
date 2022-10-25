@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { reset } from "../features/drinks/drinkSlice";
+import { reset, getDrinks } from "../features/drinks/drinkSlice";
 import { AppDispatch } from "../app/store";
 import Spinner from "../components/Spinner";
 import { createDrink } from "../features/drinks/drinkSlice";
@@ -36,7 +36,7 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
-  const { drink, isLoading, isError, isSuccess, message } = useSelector(
+  const { isLoading, isError, isSuccess, message } = useSelector(
     (state: any) => {
       return state.drinks;
     }
@@ -46,11 +46,15 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
     if (isError) {
       toast.error(message);
     }
+
     if (isSuccess) {
       navigate("/");
     }
     dispatch(reset());
-  }, [drink, isError, isSuccess, message, navigate, dispatch]);
+    return () => {
+      dispatch(getDrinks());
+    };
+  }, [isError, isSuccess, message, navigate, dispatch]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDrinkFormData((previousState) => ({
@@ -107,6 +111,7 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
     const drinkData = { name, recipe, instructions, glass };
     dispatch(createDrink(drinkData));
     setDrinkModalOpen(false);
+    navigate("/");
   };
 
   if (isLoading) {
@@ -151,11 +156,11 @@ const DrinkForm = ({ setDrinkModalOpen }: any) => {
           name="glass"
           id="glass"
           className="form-select"
+          defaultValue={"DEFAULT"}
           onChange={handleSelectChange}
         >
-          <option hidden disabled selected>
-            {" "}
-            -- select an option --{" "}
+          <option hidden disabled value={"DEFAULT"}>
+            -- select an option --
           </option>
           <option value="rocks">Rocks Glass</option>
           <option value="martini">Martini Glass</option>

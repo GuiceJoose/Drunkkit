@@ -12,6 +12,16 @@ const createDrink = async (drinkData: any, token: string) => {
   return response.data;
 };
 
-const drinkService = { createDrink };
+const getDrinks = async (token: string) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL, config);
+  return response.data;
+};
+
+const drinkService = { createDrink, getDrinks };
 
 export default drinkService;

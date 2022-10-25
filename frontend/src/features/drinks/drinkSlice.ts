@@ -6,7 +6,7 @@ const retrievedUser = localStorage.getItem("user");
 const user: string = retrievedUser !== null ? JSON.parse(retrievedUser) : "";
 
 interface DrinkState {
-  drink: DrinkData;
+  drinks: [];
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
@@ -21,7 +21,7 @@ interface DrinkData {
 }
 
 const initialState = {
-  drink: {},
+  drinks: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -45,6 +45,24 @@ export const createDrink = createAsyncThunk<
   }
 });
 
+export const getDrinks = createAsyncThunk<any, void, { state: RootState }>(
+  "drinks/getAll",
+  async (_, thunkAPI) => {
+    try {
+      const token: string = thunkAPI.getState().auth.user.token;
+      return await drinkService.getDrinks(token);
+    } catch (error: any) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const drinkSlice = createSlice({
   name: "drinks",
   initialState,
@@ -61,6 +79,19 @@ export const drinkSlice = createSlice({
         state.isSuccess = true;
       })
       .addCase(createDrink.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload as string;
+      })
+      .addCase(getDrinks.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getDrinks.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.drinks = action.payload;
+      })
+      .addCase(getDrinks.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload as string;

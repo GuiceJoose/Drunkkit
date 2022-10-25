@@ -1,4 +1,3 @@
-const { urlencoded } = require("express");
 const asyncHandler = require("express-async-handler");
 
 const Bar = require("../models/barModel");
